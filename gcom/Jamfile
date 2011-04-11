@@ -1,0 +1,4 @@
+project
+	;
+
+exe gcom : gcom.cpp /libgcom//libgcom ;

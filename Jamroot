@@ -1,0 +1,8 @@
+project
+	: requirements <library-file>/usr/lib/libboost_system.so
+	;
+
+use-project /libgcom : libgcom ;
+
+build-project libgcom ;
+build-project gcom ;

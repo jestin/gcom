@@ -1,0 +1,5 @@
+project
+	: usage-requirements <include>.
+	;
+
+lib libgcom : [ glob *.cpp ] : <link>shared ;
