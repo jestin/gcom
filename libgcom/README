@@ -1,0 +1,15 @@
+
+libgcom
+----------
+
+This is a C++ library for interfacing with 3D printers such as RepRaps and
+Makerbots.  It is meant as a way to separate out some of the functionality
+of ReplicatorG, the current control software, so that it is easier for
+developers to create their own user interfaces and other tools.  This library
+is written in C++ so that it can run natively without the need for any runtimes
+which might prevent it from being run on low-memory computers such as hacked
+wifi routers or other such devices.  It is also my hope that separating out
+the control software will allow developers to use it inside design software
+(such as putting a 'print' command directly into Blender or OpenSCAD).
+
+
