@@ -27,14 +27,13 @@
 
 using namespace std;
 
-SerialDriver::SerialDriver(string port, unsigned int baud_rate)
-: io(), serial(io, port)
+SerialDriver::SerialDriver(Serial_Options options)
+: io(), serial(io, options.port)
 {
-	this->port = port;
-	serial.set_option(serial_port_base::baud_rate(baud_rate));
-	serial.set_option(serial_port_base::parity(serial_port_base::parity::none));
-	serial.set_option(serial_port_base::stop_bits(serial_port_base::stop_bits::one));
-	//serial.set_option(boost::asio::serial_port_base::baud_rate(baud_rate));
+	SetOptions(options);
+	serial.set_option(options.baud_rate);
+	serial.set_option(options.parity);
+	serial.set_option(options.stopbits);
 }
 
 
@@ -44,7 +43,27 @@ SerialDriver::~SerialDriver()
 
 void SerialDriver::whoami()
 {
-	cout << port << endl;
+	cout << options.port << endl;
+}
+
+void SerialDriver::SetOptions(Serial_Options options)
+{
+	this->options.port = options.port;
+	this->options.baud_rate = options.baud_rate;
+	this->options.parity = options.parity;
+	this->options.databits = options.databits;
+	this->options.stopbits = options.stopbits;
+	this->options.debuglevel = options.debuglevel;
+}
+
+void SerialDriver::InitializeOptions(Serial_Options* options)
+{
+	options->port = "/dev/ttyUSB0"; // TODO default this to the first serial port found
+	options->baud_rate = serial_port_base::baud_rate(38400);
+	options->parity = serial_port_base::parity(serial_port_base::parity::none);
+	options->databits = 1.0;
+	options->stopbits = serial_port_base::stop_bits(serial_port_base::stop_bits::one);
+	options->debuglevel = 0;
 }
 
 bool SerialDriver::Initialize()

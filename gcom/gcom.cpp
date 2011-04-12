@@ -5,18 +5,19 @@
 
 int main(int argc, char* argv[])
 {
-	string port;
+	Serial_Options options;
+	SerialDriver::InitializeOptions(&options);
 
 	if(argc > 1)
 	{
-		port = argv[1];
+		options.port = argv[1];
 	}
 	else
 	{
-		port = "/dev/ttyUSB0";
+		options.port = "/dev/ttyUSB0";
 	}
 
-	SerialDriver driver(port, 38400);
+	SerialDriver driver(options);
 	driver.whoami();
 	CommandPackage command;
 }
