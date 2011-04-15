@@ -51,6 +51,6 @@
 #define MB_CHANGE_TOOL			0x86
 #define MB_WAIT_FOR_TOOL		0x87
 #define MB_TOOL_COMMAND			0x88
-#define MB_ENABE_AXES			0x89
+#define MB_ENABLE_AXES			0x89
 
 #endif // MOTHERBOARD_CODES_H
