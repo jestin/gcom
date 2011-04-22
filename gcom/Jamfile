@@ -1,4 +1,5 @@
 project
 	;
 
-exe gcom : gcom.cpp /libgcom//libgcom ;
+lib boost-system : : <file>/usr/lib/libboost_system.so ;
+exe gcom : gcom.cpp /libgcom//libgcom boost-system ;
